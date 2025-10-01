@@ -32,14 +32,17 @@ def hostid_search(host_id,csv_file):
                 print(f" Host Name:         {row[3]},")
                 print(f" Host Location:     {row[5]}, ")
                 print(f" host since:        {row[4]}" )
+                
         if len(countable)==0:
             print("entered id is invalid please run again")
+            host_id=None
     #         f=input("enter continue other search")
     #         if f==continue_other_search:
     #             break
     #         else:
     except Exception as e:
         print({e})
+    return host_id
     
 
 def location_search(host_location,csv_file):
@@ -49,24 +52,31 @@ def location_search(host_location,csv_file):
     
     countable2=[]
     for row in csv_reader:
-        if host_location in {row[5]}:
+        if host_location == {row[5]}:
             print(row)
             countable2.append(host_location)
             print(f":{row[3]},")
             print(f"     {row[13]}, {row[20]},{row[21]},{row[22]}")
     if len(countable2)==0:
-           print ("entered location is not valid")
+          print(f"Not a valid host location: '{host_location}'")
+
 def ptp_search(csv_file,ptp_type):
+    ptp_type
     countable3=[]
     csv_file.seek(0)
     csv_reader = csv.reader(csv_file)
     for row in csv_reader:
-        if ptp_type in row[13]:
+        if ptp_type == row[13]:
             countable3.append(ptp_type)
             print(f" Data showing  room type, accommodates, bathrooms_text, bedrooms and  beds for {ptp_type} properties")
             print(f"{row[14:18]}  ")
+    S='S'
     if len(countable3)==0:
-            print("enter correct type of property")
+           print(f"Not a valid ptp_type: '{ptp_type}'")
+           ptp_type=None
+           
+    
+    return ptp_type
 def review_search(csv_file,R):
     print(f" Data showing review score rating, review score accuracy and review score cleanlines for Location {R}")
     print("review score rating  review score accuracy  review score cleanliness")
@@ -74,7 +84,7 @@ def review_search(csv_file,R):
     countable4=[]
     csv_reader = csv.reader(csv_file)
     for row in csv_reader:
-        if R in row[5]:
+        if R == row[5]:
             countable4.append(R)
             print(f"{row[27]},                        {row[28]},                 {row[29]}")
     if len(countable4)==0:
