@@ -55,7 +55,7 @@ def app(path_file,csv_file,a):
                 if ptp_type.lower()=='back':
                     exit_outer_loop=True
                     break
-                elif ptp_type.lower()==next:
+                elif ptp_type.lower()=="next":
                     break
                 elif ptp_type:
                     ptp_type=ptp_search(csv_file,ptp_type)

@@ -72,13 +72,13 @@ def line_graph_illustration():
     ax1.plot(ogm,ogp,color='blue')
     ax2.plot(og1,ogp1,color='yellow')
     ax3.plot(og2,ogp2,color='green')
-    ax1.set (title= "Air bnb prices from 2019 to 2020",  xlabel='mean price',ylabel='months')
-    ax2.set (title= "Air bnb prices from 2020 to 2021",  xlabel='mean price',ylabel='months')
-    ax3.set (title= "Air bnb prices from 2021 to 2022",  xlabel='mean price',ylabel='months ')        
-    plt.show
+    ax1.set (title= "Air bnb prices from 2019 to 2020",  xlabel='month',ylabel='mean_price')
+    ax2.set (title= "Air bnb prices from 2020 to 2021",  xlabel='month',ylabel='mean price')
+    ax3.set (title= "Air bnb prices from 2021 to 2022",  xlabel='month',ylabel='mean price ')        
+    plt.show()
 def linegraph_yr():
     fig,axs=plt.subplots(1,1,figsize=(7,7))
-    plot_frame['host_since']=pd.to_datetime(plot_frame['host_since'])
+    plot_frame['host_since']=pd.to_datetime(plot_frame['host_since'],format='%y-%m-%d')
     price_per=plot_frame.groupby(plot_frame.host_since.dt.year)
     year=price_per.size()
     years=year.index.tolist()
@@ -88,10 +88,10 @@ def linegraph_yr():
     # xl=to_2022['price'].mean().tolist()
     # yl=to_2022['host_since'].mean().tolist()
     axs.plot(years,mean_price,color='yellow')
-    axs.set_xlabel('mean price',fontsize=17)
-    axs.set_ylabel('years',fontsize=27)
+    axs.set_xlabel('years',fontsize=17)
+    axs.set_ylabel('mean price',fontsize=27)
     axs.set_title("Air bnb prices from 2019 to 2022", fontsize=17)
-    plt.show
+    plt.show()
 
 
 # In[35]:

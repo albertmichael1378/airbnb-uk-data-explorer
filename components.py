@@ -52,7 +52,7 @@ def location_search(host_location,csv_file):
     
     countable2=[]
     for row in csv_reader:
-        if host_location == {row[5]}:
+        if host_location.strip().casefold() == row[5].strip().casefold():
             print(row)
             countable2.append(host_location)
             print(f":{row[3]},")
@@ -66,7 +66,7 @@ def ptp_search(csv_file,ptp_type):
     csv_file.seek(0)
     csv_reader = csv.reader(csv_file)
     for row in csv_reader:
-        if ptp_type == row[13]:
+        if ptp_type.strip().casefold() == row[13].strip().casefold():
             countable3.append(ptp_type)
             print(f" Data showing  room type, accommodates, bathrooms_text, bedrooms and  beds for {ptp_type} properties")
             print(f"{row[14:18]}  ")
